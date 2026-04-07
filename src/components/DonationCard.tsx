@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge";
 
 interface DonationCardProps {
   hotelName: string;
+  slug: string;
   foodType: string;
   servings: number;
   rating: number;
@@ -31,6 +32,7 @@ const DonationCard = ({
   urgency,
   location,
   image,
+  slug,
 }: DonationCardProps) => {
   const urg = urgencyConfig[urgency];
 
@@ -84,9 +86,21 @@ const DonationCard = ({
           <span className="font-body">Prepared {timeProcessed}</span>
         </div>
 
-        <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-display font-bold rounded-lg">
-          Claim Now
-        </Button>
+        <div className="grid grid-cols-2 gap-2">
+          <Button
+            asChild
+            className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-display font-bold rounded-lg"
+          >
+            <a href={`/claim?hotel=${encodeURIComponent(hotelName)}`}>Claim</a>
+          </Button>
+          <Button
+            asChild
+            variant="secondary"
+            className="w-full bg-secondary hover:bg-secondary/90 text-secondary-foreground font-display font-bold rounded-lg"
+          >
+            <a href={`/hotels/${encodeURIComponent(slug)}`}>More Info</a>
+          </Button>
+        </div>
       </div>
     </motion.div>
   );

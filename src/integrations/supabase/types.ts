@@ -53,6 +53,51 @@ export type Database = {
         }
         Relationships: []
       }
+      hotel_donations: {
+        Row: {
+          id: string
+          hotel_name: string
+          food_type: string
+          prepared_time: string | null
+          servings: number | null
+          quantity: string | null
+          price: string | null
+          notes: string | null
+          contact: string | null
+          user_id: string
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          hotel_name: string
+          food_type: string
+          prepared_time?: string | null
+          servings?: number | null
+          quantity?: string | null
+          price?: string | null
+          notes?: string | null
+          contact?: string | null
+          user_id: string
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          hotel_name?: string
+          food_type?: string
+          prepared_time?: string | null
+          servings?: number | null
+          quantity?: string | null
+          price?: string | null
+          notes?: string | null
+          contact?: string | null
+          user_id?: string
+          created_at?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never

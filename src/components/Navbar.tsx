@@ -3,6 +3,7 @@ import { Heart, Menu, X, LogOut, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
+import QuickSignupModal from "./QuickSignupModal";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
@@ -36,6 +37,22 @@ const Navbar = () => {
         <div className="hidden md:flex items-center gap-3">
           {user ? (
             <>
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => navigate("/manage-donations")}
+                className="font-display font-bold text-sm text-muted-foreground hover:text-foreground"
+              >
+                My Donations
+              </Button>
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => navigate("/profile")}
+                className="font-display font-bold text-sm text-muted-foreground hover:text-foreground"
+              >
+                Profile
+              </Button>
               <div className="flex items-center gap-2 text-sm font-body text-muted-foreground">
                 <User className="w-4 h-4" />
                 <span className="max-w-[120px] truncate">{user.email}</span>
@@ -59,12 +76,13 @@ const Navbar = () => {
               >
                 Log In
               </Button>
-              <Button
-                className="bg-primary hover:bg-primary/90 text-primary-foreground font-display font-bold text-sm rounded-lg"
-                onClick={() => navigate("/auth")}
-              >
-                Sign Up Free
-              </Button>
+              <QuickSignupModal
+                trigger={
+                  <Button className="bg-primary hover:bg-primary/90 text-primary-foreground font-display font-bold text-sm rounded-lg">
+                    Sign Up Free
+                  </Button>
+                }
+              />
             </>
           )}
         </div>
@@ -81,21 +99,47 @@ const Navbar = () => {
           <a href="#" className="block text-sm font-medium text-muted-foreground font-body py-2">How It Works</a>
           <a href="#" className="block text-sm font-medium text-muted-foreground font-body py-2">About</a>
           {user ? (
-            <Button
-              variant="ghost"
-              className="w-full justify-start font-display font-bold text-sm"
-              onClick={handleSignOut}
-            >
-              <LogOut className="w-4 h-4 mr-2" />
-              Log Out
-            </Button>
+            <>
+              <Button
+                variant="ghost"
+                className="w-full justify-start font-display font-bold text-sm"
+                onClick={() => { navigate("/manage-donations"); setOpen(false); }}
+              >
+                My Donations
+              </Button>
+              <Button
+                variant="ghost"
+                className="w-full justify-start font-display font-bold text-sm"
+                onClick={() => { navigate("/profile"); setOpen(false); }}
+              >
+                Profile
+              </Button>
+              <Button
+                variant="ghost"
+                className="w-full justify-start font-display font-bold text-sm"
+                onClick={handleSignOut}
+              >
+                <LogOut className="w-4 h-4 mr-2" />
+                Log Out
+              </Button>
+            </>
           ) : (
-            <Button
-              className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-display font-bold rounded-lg"
-              onClick={() => { navigate("/auth"); setOpen(false); }}
-            >
-              Sign Up Free
-            </Button>
+            <div className="space-y-2">
+              <Button
+                variant="ghost"
+                className="w-full justify-start font-display font-bold text-sm"
+                onClick={() => { navigate("/auth"); setOpen(false); }}
+              >
+                Log In
+              </Button>
+              <QuickSignupModal
+                trigger={
+                  <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-display font-bold rounded-lg">
+                    Sign Up Free
+                  </Button>
+                }
+              />
+            </div>
           )}
         </div>
       )}

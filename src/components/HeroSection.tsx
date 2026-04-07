@@ -51,14 +51,23 @@ const HeroSection = () => {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="flex flex-col sm:flex-row gap-4"
           >
-            <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground font-display font-bold text-base px-8 py-6 rounded-xl shadow-lg">
-              <Heart className="mr-2 w-5 h-5" />
-              Find Food Near You
-              <ArrowRight className="ml-2 w-5 h-5" />
+            <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground font-display font-bold text-base px-8 py-6 rounded-xl shadow-lg" asChild>
+              <a href="/" className="inline-flex items-center gap-2">
+                <Heart className="w-5 h-5" />
+                Find Food Near You
+                <ArrowRight className="w-5 h-5" />
+              </a>
             </Button>
-            <Button size="lg" variant="outline" className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 font-display font-bold text-base px-8 py-6 rounded-xl backdrop-blur-sm">
-              <Building2 className="mr-2 w-5 h-5" />
-              Donate as a Hotel
+            <Button size="lg" variant="outline" className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 font-display font-bold text-base px-8 py-6 rounded-xl backdrop-blur-sm" asChild>
+              <a href="/donate-hotel" className="inline-flex items-center gap-2 text-left">
+                <Building2 className="w-5 h-5" />
+                <div>
+                  <span>Donate as a Hotel</span>
+                  <p className="text-xs text-muted-foreground font-normal mt-1">
+                    Add food prep info, servings, pricing, and pickup details in one form.
+                  </p>
+                </div>
+              </a>
             </Button>
           </motion.div>
         </div>
