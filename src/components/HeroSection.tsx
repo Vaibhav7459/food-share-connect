@@ -32,7 +32,7 @@ const HeroSection = () => {
             className="font-display text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight text-primary-foreground mb-6"
           >
             Turn Surplus Into
-            <span className="block text-primary"> Second Servings</span>
+            <span className="block text-primary"> Meals Bridge</span>
           </motion.h1>
 
           <motion.p
